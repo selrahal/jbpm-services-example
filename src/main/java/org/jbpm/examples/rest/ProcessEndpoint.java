@@ -50,6 +50,14 @@ public class ProcessEndpoint {
 	}
 	
 	@GET
+	@Path("/complete/{id}")
+	public Response completeWorkItem(@PathParam("id") String id) {
+		LOG.info("Completing work item " + id);
+		processService.completeWorkItem(Long.parseLong(id), null);
+		return Response.ok().build();
+	}
+	
+	@GET
 	@Path("/status/{processInstanceId}")
 	public Response getStatus(@PathParam("processInstanceId") Long processInstanceId) {
 		ProcessInstanceDesc processInstanceDesc = runtimeDataService.getProcessInstanceById(processInstanceId);
