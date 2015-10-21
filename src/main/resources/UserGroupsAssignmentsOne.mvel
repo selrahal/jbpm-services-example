@@ -1,0 +1,4 @@
+usersgroups = [ 
+  new User('bpmsAdmin') : [new Group("admin")],
+];
+return usersgroups;
